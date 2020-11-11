@@ -29,10 +29,9 @@ public class MainActivity extends AppCompatActivity {
     public void newProduct (View view) {
 
         int sku = Integer.parseInt(skuBox.getText().toString());
-
         Product product = new Product(productBox.getText().toString(), sku);
 
-        // TODO: add to database
+
         MyDBHandler dbHandler= new MyDBHandler(this);
         dbHandler.addProduct(product);
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void lookupProduct (View view) {
 
-        // TODO: get from Database
+
         MyDBHandler dbHandler= new MyDBHandler(this);
         Product product = dbHandler.findProduct(productBox.getText().toString());
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void removeProduct (View view) {
 
-        // TODO: rem
+
         MyDBHandler dbHandler= new MyDBHandler(this);
         boolean result = dbHandler.deleteProduct(productBox.getText().toString());
 
@@ -69,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
             productBox.setText("");
             skuBox.setText("");
         }
-        else
+        else {
             idView.setText("No Match Found");
+        }
     }
 
 

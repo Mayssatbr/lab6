@@ -30,10 +30,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
         onCreate(db);
     }
-    public  void addProduct(Product product){
+    public void addProduct(Product product){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PRODUCTNAME,product.getProductName());
+        values.put(COLUMN_SKU,product.getSku());
         db.insert(TABLE_PRODUCTS,null,values);
         db.close();
 
@@ -70,6 +71,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
             result=true;
         }
         db.close();
+
         return result;
     }
 }
